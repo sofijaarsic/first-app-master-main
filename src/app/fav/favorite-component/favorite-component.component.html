@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar> </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="memo">
+    <ion-item>
+      <ion-input
+        class="title"
+        label="Title"
+        [(ngModel)]="memo.title"
+      ></ion-input>
+    </ion-item>
+    <ion-textarea class="text-content" lines="none" [(ngModel)]="memo.content">
+    </ion-textarea>
+  </div>
+</ion-content>

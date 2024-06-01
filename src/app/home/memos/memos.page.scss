@@ -1,0 +1,27 @@
+.text-content {
+  height: 240px;
+}
+.title {
+  height: 20px;
+  display: -webkit-box;
+  overflow: hidden;
+}
+.content {
+  font-weight: 300;
+  height: 90px;
+  display: -webkit-box;
+  overflow: hidden;
+}
+ion-title {
+  text-align: center;
+}
+.custom-card {
+  --background: #efddec; /* Replace with your desired color */
+  --color: black;
+  border-radius: 10px; /* Optional: add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: add shadow */
+}
+
+.custom-card ion-card-header {
+  --background: #d9cbd7; /* Optional: different color for header */
+}
