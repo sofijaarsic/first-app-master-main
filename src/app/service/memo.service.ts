@@ -68,7 +68,7 @@ export class MemoService {
         })
       );
   }
-  // &orderBy="userId"&equalTo="${id}"
+
   getMemos() {
     console.log('geetMemos');
     const id = this.authService.getUserId();

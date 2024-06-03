@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { User } from './user.model';
 import { environment } from 'src/environments/environment';
 export interface AuthResponseData {
@@ -85,23 +85,22 @@ export class AuthenticationService {
   }
 
   resetPassword(email: string) {
-    return this.http.post(
-      `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${environment.firebaseApiKey}`,
-      { requestType: 'PASSWORD_RESET', email: email }
-    );
+    if (!email) {
+      return of({ error: 'Please enter a valid email address.' });
+    }
+
+    return this.http
+      .post<{ email: string }>(
+        `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${environment.firebaseApiKey}`,
+        { requestType: 'PASSWORD_RESET', email: email }
+      )
+      .pipe(
+        catchError((error) => {
+          return of({
+            error:
+              'An error occurred while resetting the password. Please try again.',
+          });
+        })
+      );
   }
 }
-
-// getProfile(): Observable<User | null> {
-//   return from(
-//     new Promise<User | null>((resolve, reject) => {
-//       this.ngFireAuth.onAuthStateChanged((user) => {
-//         if (user) {
-//           resolve(user);
-//         } else {
-//           resolve(null);
-//         }
-//       }, reject);
-//     })
-//   );
-// }

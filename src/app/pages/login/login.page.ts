@@ -20,29 +20,6 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
-  // login(loginForm: NgForm) {
-  //   if (loginForm.valid) {
-  //     this.authService.logIn(loginForm.value).subscribe({
-  //       next: (resData) => {
-  //         this.router.navigateByUrl('/home/tabs/memos');
-  //         console.log('login user');
-  //         console.log(this.authService.user);
-  //       },
-  //       error: async (errRes) => {
-  //         let message = 'Incorrect email or password';
-
-  //         const alert = await this.alertCtrl.create({
-  //           header: 'Authentication failed',
-  //           message,
-  //           buttons: ['Okay'],
-  //         });
-  //         await alert.present();
-  //         loginForm.reset();
-  //       },
-  //     });
-  //   }
-  // }
-
   async login(loginForm: NgForm) {
     if (loginForm.valid) {
       const loading = await this.loadingCtrl.create({

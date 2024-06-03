@@ -1,5 +1,5 @@
 export interface Memo {
-  id?: string; //? znaci da je optional
+  id?: string;
   idMemo?: string;
   userId: string;
   title: string;
